@@ -34,11 +34,9 @@ exports.create = (req, res) => {
 
 // Retrieve all Staff from the database.
 exports.findAll = (req, res) => {
-    const firstname = req.query.firstname;
-    const lastname = req.query.lastname;
-    var condition = firstname ? { firstname: { [Op.like]: `%${firstname}%` } } : lastname ? { lastname: { [Op.like]: `%${lastname}%` } } : null;
-
-    Staff.findAll({ where: condition })
+    const officeId = req.params.officeId;
+    
+    Staff.findAll({ where: {officeId: officeId} })
         .then(data => {
             res.send(data);
         })
