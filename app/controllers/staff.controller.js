@@ -33,10 +33,10 @@ exports.create = (req, res) => {
 };
 
 // Retrieve all Staff from the database.
-exports.findAll = (req, res) => {
+exports.findAndCountAll = (req, res) => {
     const officeId = req.params.officeId;
     
-    Staff.findAll({ where: {officeId: officeId} })
+    Staff.findAndCountAll({ where: {officeId: officeId} })
         .then(data => {
             res.send(data);
         })
