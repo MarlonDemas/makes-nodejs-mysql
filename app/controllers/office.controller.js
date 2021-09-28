@@ -46,7 +46,7 @@ exports.findAll = (req, res) => {
         .then(data => {
             result.office = data;
 
-            Staff.findAndCountAll({ where: {officeId: officeId} })
+            Staff.findAndCountAll({ where: {officeId: data.id} })
                 .then(data => {
                     result.staff = data;
                     res.push(result);
