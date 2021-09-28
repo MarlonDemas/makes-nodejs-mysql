@@ -22,4 +22,6 @@ db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
 db.offices = require("./office.model.js")(sequelize, Sequelize);
 db.staff = require("./staff.model.js")(sequelize, Sequelize);
 
+db.offices.hasMany(db.staff);
+
 module.exports = db;
