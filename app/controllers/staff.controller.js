@@ -1,10 +1,10 @@
 const db = require("../models");
-const Staff = db.staff;
+const Staff = db.office;
 
 // Create and Save a new Staff
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.firstname) {
+    if (!req.body.officeId) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
