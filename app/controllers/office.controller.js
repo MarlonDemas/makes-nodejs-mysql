@@ -45,6 +45,7 @@ exports.findAll = (req, res) => {
     Office.findAll({ where: condition })
         .then(data => {
             result.office = data;
+            console.log(data)
 
             Staff.findAndCountAll({ where: {officeId: data.id} })
                 .then(data => {
