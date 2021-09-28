@@ -1,7 +1,6 @@
 const db = require("../models");
 const Office = db.offices;
 const Staff = db.staff;
-const Op = db.Sequelize.Op;
 
 // Create and Save a new Office Space
 exports.create = (req, res) => {
@@ -38,26 +37,9 @@ exports.create = (req, res) => {
 
 // Retrieve all Office Spaces from the database.
 exports.findAll = (req, res) => {
-    const name = req.query.name;
-    let condition = name ? { name: { [Op.like]: `%${name}%` } } : null;
-    let result = {}
-
-    Office.findAll({ where: condition })
+    Office.findAll({ include: Staff })
         .then(data => {
-            result.office = data;
-            console.log(data)
-
-            Staff.findAndCountAll({ where: {officeId: data.id} })
-                .then(data => {
-                    result.staff = data;
-                    res.push(result);
-                })
-                .catch(err => {
-                    res.status(500).send({
-                        message:
-                        err.message || "Some error occurred while retrieving staff members."
-                    });
-                });
+            res.send(data);
         })
         .catch(err => {
             res.status(500).send({
