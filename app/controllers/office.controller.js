@@ -53,7 +53,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Office.findByPk(id)
+    Office.findOne({where: {id: id}, include: Staff})
         .then(data => {
             res.send(data);
         })
