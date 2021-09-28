@@ -1,6 +1,3 @@
-const db = require("../models");
-const Staff = db.staff;
-
 module.exports = (sequelize, Sequelize) => {
     const Office = sequelize.define("office", {
         name: {

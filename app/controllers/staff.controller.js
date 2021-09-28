@@ -1,5 +1,5 @@
 const db = require("../models");
-const Staff = db.office;
+const Staff = db.staff;
 
 // Create and Save a new Staff
 exports.create = (req, res) => {
