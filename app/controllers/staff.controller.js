@@ -1,6 +1,5 @@
 const db = require("../models");
 const Staff = db.staff;
-const Op = db.Sequelize.Op;
 
 // Create and Save a new Staff
 exports.create = (req, res) => {
@@ -16,7 +15,8 @@ exports.create = (req, res) => {
     const staff = {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
-        avatar: req.body.avatar
+        avatar: req.body.avatar,
+        officeId: req.body.officeId
     }
 
     // Save Staff in the database
