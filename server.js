@@ -4,7 +4,7 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "https://offices.marlondemas.co.za"
+  origin: "*"
 };
 
 app.use(cors(corsOptions));
