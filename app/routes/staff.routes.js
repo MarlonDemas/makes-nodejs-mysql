@@ -6,9 +6,6 @@ module.exports = app => {
     // Create a new Staff Member
     router.post("/", staff.create);
 
-    // Retrieve all Staff Members in Office Space
-    router.get("/:officeId", staff.findAndCountAll);
-
     // Retrieve a single Staff Member with id
     router.get("/:id", staff.findOne);
 

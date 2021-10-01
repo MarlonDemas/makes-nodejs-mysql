@@ -4,7 +4,7 @@ const Staff = db.staff;
 // Create and Save a new Staff
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.officeId) {
+    if (!req.body.firstname) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
@@ -28,22 +28,6 @@ exports.create = (req, res) => {
             res.status(500).send({
                 message:
                 err.message || "Some error occurred while adding the staff member."
-            });
-        });
-};
-
-// Retrieve all Staff from the database.
-exports.findAndCountAll = (req, res) => {
-    const officeId = req.params.officeId;
-    
-    Staff.findAndCountAll({ where: {officeId: officeId} })
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                err.message || "Some error occurred while retrieving staff members."
             });
         });
 };
