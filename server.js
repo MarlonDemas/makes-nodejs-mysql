@@ -24,7 +24,6 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Makes' application." });
 });
 
-require("./app/routes/tutorial.routes")(app);
 require("./app/routes/office.routes")(app);
 require("./app/routes/staff.routes")(app);
 
